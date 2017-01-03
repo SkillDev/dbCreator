@@ -1,4 +1,7 @@
 <?php
-	$lol = 2;
+	
+
+	include ('Controllers/dbController.php');
+
 	include ('Views/index.html');
 ?>
