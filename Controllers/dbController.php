@@ -10,15 +10,9 @@ class test {
 	{
 		$this->host = "localhost";
 	}
-
-
-
 	public function createDatabase(){
 
-
 			echo "lol";
-
-
 	}
 
 
