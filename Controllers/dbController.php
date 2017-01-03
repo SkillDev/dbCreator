@@ -23,7 +23,7 @@ class test {
 
 
 } 
-
+$test = 'lol';
 $lol = new test();
 
 $caca = $lol->createDatabase();
