@@ -1,1 +1,13 @@
-<?php echo $lol; ?> 
+<!DOCTYPE html>
+<html>
+<head>
+	<title>My-PhpMyAdmin</title>
+</head>
+<body>
+	<h1>My-PhpMyAdmin</h1>
+	<h2>Liste des bases des données</h2>
+	<?php foreach($databases_list as $database) { ?>
+		<p><?php echo $database['Database'] ?></p>
+	<?php } ?>
+</body>
+</html>

@@ -9,11 +9,22 @@ class test {
 	public function __construct() 
 	{
 		$this->host = "localhost";
+		$this->user = 'root';
+		$this->pass = '';
 	}
+
+	public function showDatabases() {
+
+		$db = new PDO( "mysql:host=$this->host", $this->user, $this->pass );
+        $requete ="SHOW DATABASES";
+        $databases = $db->prepare($requete);
+        $databases->execute();
+        $databases_sql=$databases->fetchAll();
+        return $databases_sql;
+	}
+
+
 	public function createDatabase(){
-
-
-			echo "lol";
 
 		try
 		{
@@ -26,8 +37,8 @@ class test {
 			die('Erreur : '.$e->getMessage());
 		}
 
-	
-var_dump($bdd);
+
+		var_dump($bdd);
 
 	}
 
@@ -35,7 +46,5 @@ var_dump($bdd);
 } 
 $test = 'lol';
 $lol = new test();
-
-$caca = $lol->createDatabase();
-
+$databases_list = $lol->showDatabases();
 ?>
