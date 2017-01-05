@@ -2,12 +2,18 @@
 <html>
 <head>
 	<title>My-PhpMyAdmin</title>
+	<link rel="stylesheet" type="text/css" href="Views/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="Views/style.css">
 </head>
 <body>
 	<h1>My-PhpMyAdmin</h1>
-	<h2>Liste des bases des données</h2>
-	<?php foreach($databases_list as $database) { ?>
-		<p><?php echo $database['Database'] ?></p>
-	<?php } ?>
+	<h2>Liste des bases de données</h2>
+	<div class="list-group dbList1">
+		<?php foreach($databases_list as $database) { ?>
+		<a class="links" href="Controllers/showTables.php?name=<?php echo $database['Database']; ?>"><button type="button" class="list-group-item dbList"><?php echo $database['Database'] ?></button></a>
+		<?php } ?>
+		
+	</div>
+
 </body>
 </html>

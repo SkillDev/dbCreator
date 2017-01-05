@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Column</title>
+	<link rel="stylesheet" type="text/css" href="../Views/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="../Views/style.css">
+</head>
+<body>
+	<h1>Column</h1>
+	<h2>Describe Columns</h2>
+	<?php foreach($column_sql as $column) { ?>
+		<p><a href="Controllers/showDatabase.php"><?php $column[0]; ?></a></p>
+	<?php } ?>
+</body>
+</html>
