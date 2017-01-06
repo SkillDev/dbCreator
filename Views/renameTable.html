@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Tables</title>
+	<link rel="stylesheet" type="text/css" href="../Views/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="../Views/style.css">
+</head>
+<body>
+	<h1>Rename Table</h1>
+
+	<form class="form-inline newDbDiv" method="post" action="../Controllers/traitement.php?dbName=<?php echo $_GET['dbName']; ?>&tableName=<?php echo $_GET['tableName']; ?>">
+		<div class="form-group">
+			<label for="text">Table name :</label>
+			<input placeholder="<?php echo $_GET['tableName']; ?>" type="text" class="form-control" name="newName">
+		</div>
+		<button type="submit" class="btn btn-default">Submit</button>
+	</form>
+
+
+	
+</body>
+</html>

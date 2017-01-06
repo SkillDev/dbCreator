@@ -8,9 +8,11 @@
 <body>
 	<h1>My-PhpMyAdmin</h1>
 	<h2>Liste des bases de données</h2>
+	<a href="Controllers/showTables.php?new=db"><button class="list-group-item">Nouvelle base de données</button></a>
 	<div class="list-group dbList1">
 		<?php foreach($databases_list as $database) { ?>
 		<a class="links" href="Controllers/showTables.php?name=<?php echo $database['Database']; ?>"><button type="button" class="list-group-item dbList"><?php echo $database['Database'] ?></button></a>
+		<a href="Controllers/traitement.php?name=<?php echo $database['Database']; ?> ">Delete</a>
 		<?php } ?>
 		
 	</div>

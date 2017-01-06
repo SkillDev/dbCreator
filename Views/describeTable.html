@@ -8,8 +8,38 @@
 <body>
 	<h1>Column</h1>
 	<h2>Describe Columns</h2>
-	<?php foreach($column_sql as $column) { ?>
-		<p><a href="Controllers/showDatabase.php"><?php $column[0]; ?></a></p>
-	<?php } ?>
+
+  <table class="table table-hover">
+    <thead>
+      <tr>
+		<?php
+			$i = 0;
+			$champs = [];
+			while(isset($column_sql[$i]))
+			{ 
+				array_push($champs, $column_sql[$i]['Field']);
+		?>
+				<th><?php echo $column_sql[$i]['Field']; ?></th>
+		<?php
+				$i++;
+			}
+		?>
+      </tr>
+    </thead>
+    <tbody>
+      <?php foreach($all_sql as $all) { ?>
+      	<tr>
+      		<?php foreach ($champs as $champ) { ?>
+	      		<?php if(isset($all[$champ])) { ?>
+		      		<td><?php echo ($all[$champ]); ?></td>
+	      		<?php } ?>
+		      	<?php if(empty($all[$champ])) { ?>
+		      		<td><?php echo "NULL"; ?></td>
+		      	<?php } ?>
+      		<?php } ?>
+	    </tr>
+  	<?php } ?>
+    </tbody>
+  </table>
 </body>
 </html>

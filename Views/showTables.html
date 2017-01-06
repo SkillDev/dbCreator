@@ -8,10 +8,12 @@
 <body>
 	<h1>Tables</h1>
 	<h2>Show tables</h2>
-
+	<a href="showTables.php?newTable=<?php echo $_GET['name']; ?>"><button class="list-group-item">Add table</button></a>
 	<div class="list-group">
 		<?php foreach($tables_sql as $tables) { ?>
 		<a class="list-group-item" href="showTables.php?name=<?php echo $_GET['name']; ?>&table=<?php echo $tables['Tables_in_' . $_GET['name']]; ?>"><?php echo $tables["Tables_in_" . $_GET['name']]; ?></a>
+		<a href="traitement.php?dbName=<?php echo $_GET['name']; ?>&tableDrope=<?php echo $tables['Tables_in_' . $_GET['name']]; ?> ">Delete</a>
+		<a href="traitement.php?dbName=<?php echo $_GET['name']; ?>&tableName=<?php echo $tables['Tables_in_' . $_GET['name']]; ?> ">Rename Table</a>
 		<?php } ?>
 	</div>
 

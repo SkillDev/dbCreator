@@ -45,12 +45,24 @@ class dbCtrl {
 		$column = $db->prepare($requete);
 		$column->execute();
 		$column_sql = $column->fetchAll();
-		var_dump($column_sql);
 		return $column_sql;
 	}
 
+	public function selectAllFromTables($name, $table) {
+		$db = new PDO( "mysql:host=$this->host", $this->user, $this->pass );
+		$requete1 ="USE " . $name;
+		$databases1 = $db->prepare($requete1);
+		$databases1->execute();
+		$requete ="SELECT * FROM " . $table;
+		$all = $db->prepare($requete);
+		$all->execute();
+		$all_sql = $all->fetchAll();
+		return $all_sql;
+	}
+
 	public function createDatabase($dbname) {
-		$requete = "CREATE DATABASE IF NOT EXISTS `LOL` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci";
+		$pdo = new PDO( "mysql:host=$this->host", $this->user, $this->pass );
+		$requete = "CREATE DATABASE IF NOT EXISTS ". $dbname ." DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci";
 		$pdo->prepare($requete)->execute();
 		var_dump($bdd);
 	}
@@ -62,25 +74,39 @@ class dbCtrl {
 	}
 
 
+	public function deleteTable($dbname, $tableName){
+		$db = new PDO( "mysql:host=$this->host", $this->user, $this->pass );
+		$requete1 ="USE " . $dbname;
+		$databases1 = $db->prepare($requete1);
+		$databases1->execute();
+		$requete = "DROP TABLE ".$tableName;
+		$db->prepare($requete)->execute();
+	}
+
 	public function deleteDatabase($dbname){
+		$db = new PDO( "mysql:host=$this->host", $this->user, $this->pass );
+		$requete = "DROP DATABASE ".$dbname;
+		$db->prepare($requete)->execute();
+	}
 
-		$requete = "DROP DATABASE".$dbname;
+
+	public function createTable($dbname, $tablename){
+		$pdo = new PDO( "mysql:host=$this->host", $this->user, $this->pass );
+		$requete1 ="USE " . $dbname;
+		$databases1 = $pdo->prepare($requete1);
+		$databases1->execute();
+		$requete = "CREATE TABLE " . $tablename . " (id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY)";
 		$pdo->prepare($requete)->execute();
 
 	}
 
 
-	public function createTable($tablename){
-
-		$requete = "CREATE TABLE MyGuests (id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY)";
-		$pdo->prepare($requete)->execute();
-
-	}
-
-
-	public function renameTable($tablename){
-
-		$requete = "RENAME TABLE myguests TO lol";
+	public function renameTable($dbname, $tablename, $newName){
+		$pdo = new PDO( "mysql:host=$this->host", $this->user, $this->pass );
+		$requete1 ="USE " . $dbname;
+		$databases1 = $pdo->prepare($requete1);
+		$databases1->execute();
+		$requete = "RENAME TABLE " . $tablename . " TO " . $newName;
 		$pdo->prepare($requete)->execute();
 	}
 
